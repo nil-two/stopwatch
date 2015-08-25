@@ -1,0 +1,26 @@
+body {
+  background: #e0e0e0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#time {
+  color: #00aaff;
+  font-size: 128px;
+  margin: 40px auto;
+}
+
+.btn {
+  display: inline-block;
+  width: 100px;
+  padding: 7px;
+  border-radius: 5px;
+  box-shadow: 0 4px 0 #0088cc;
+  color: #fff;
+  background: #00aaff;
+  cursor: pointer;
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
