@@ -22,6 +22,11 @@
         intervalId: -1,
         state: idle,
 
+        _buttonState: function(button) {
+            return (this.state[button] === undefined)
+                ? 'inactive'
+                : 'active';
+        },
         _updateButtonState: function() {
             this.set('start', this._buttonState('start'));
             this.set('stop', this._buttonState('stop'));
@@ -31,9 +36,11 @@
             if (this.state[button] === undefined)
                 return;
             this.state[button].bind(this)();
+            this._updateButtonState();
         },
         oninit: function() {
             this.set('time', 0.00);
+            this._updateButtonState();
         },
         start: function() {
             this._click('start');
