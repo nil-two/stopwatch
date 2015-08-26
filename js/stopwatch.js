@@ -6,20 +6,14 @@
             }.bind(this), 10);
             this.state = running;
         },
-        stop: function() {
-        },
         reset: function() {
             this.set('time', 0.0);
         }
     };
     var running = {
-        start: function() {
-        },
         stop: function() {
             clearInterval(this.intervalId);
             this.state = idle;
-        },
-        reset: function() {
         },
     };
 
@@ -28,17 +22,27 @@
         intervalId: -1,
         state: idle,
 
+        _updateButtonState: function() {
+            this.set('start', this._buttonState('start'));
+            this.set('stop', this._buttonState('stop'));
+            this.set('reset', this._buttonState('reset'));
+        },
+        _click: function(button) {
+            if (this.state[button] === undefined)
+                return;
+            this.state[button].bind(this)();
+        },
         oninit: function() {
             this.set('time', 0.00);
         },
         start: function() {
-            this.state.start.bind(this)();
+            this._click('start');
         },
         stop: function() {
-            this.state.stop.bind(this)();
+            this._click('stop');
         },
         reset: function() {
-            this.state.reset.bind(this)();
+            this._click('reset');
         },
     });
 
