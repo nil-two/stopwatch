@@ -53,7 +53,7 @@
         },
     });
 
-    stopWatch = new Stopwatch({
+    new Stopwatch({
         el: '#stopwatch_app',
         data: {},
     });
