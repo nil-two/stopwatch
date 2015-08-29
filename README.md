@@ -1,4 +1,4 @@
-StopWatch
+Stopwatch
 =========
 
 Measure the amount of time elapsed.
