@@ -7,11 +7,13 @@
             }.bind(this), 10);
             this.state = running;
         },
+
         reset: function() {
             this.set('time', 0.0);
 	    this.totalTime = 0;
         }
     };
+
     var running = {
         stop: function() {
             clearInterval(this.intervalId);
@@ -22,6 +24,7 @@
 
     var Stopwatch = Ractive.extend({
         template: '#stopwatch_template',
+
         intervalId: -1,
         startTime: 0,
         totalTime: 0,
@@ -32,27 +35,33 @@
                 ? 'inactive'
                 : 'active';
         },
+
         _updateButtonState: function() {
             this.set('start', this._buttonState('start'));
             this.set('stop', this._buttonState('stop'));
             this.set('reset', this._buttonState('reset'));
         },
+
         _click: function(button) {
             if (this.state[button] === undefined)
                 return;
             this.state[button].bind(this)();
             this._updateButtonState();
         },
+
         oninit: function() {
             this.set('time', 0.00);
             this._updateButtonState();
         },
+
         start: function() {
             this._click('start');
         },
+
         stop: function() {
             this._click('stop');
         },
+
         reset: function() {
             this._click('reset');
         },
