@@ -10,14 +10,14 @@
 
         reset: function() {
             this.set('time', 0.0);
-	    this.totalTime = 0;
+            this.totalTime = 0;
         }
     };
 
     var running = {
         stop: function() {
             clearInterval(this.intervalId);
-	    this.totalTime += Date.now() - this.startTime;
+            this.totalTime += Date.now() - this.startTime;
             this.state = idle;
         },
     };
